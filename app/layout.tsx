@@ -1,5 +1,6 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Providers } from './providers';
 import Sidebar from './sidebar'
 import Topbar from './topbar'
@@ -21,6 +22,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
             </main>
           </div>
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
