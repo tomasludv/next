@@ -1,17 +1,18 @@
 'use client';
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon, } from '@heroicons/react/24/outline'
 
 const navigation = [
-    { name: 'Properties', href: '/', icon: HomeIcon, current: true },
-    { name: 'Team', href: '#', icon: UsersIcon, current: false },
-    { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-    { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-    { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+    { name: 'New Properties', href: '/', icon: HomeIcon },
+    { name: 'My Properties', href: '/my-properties', icon: UsersIcon },
+    { name: 'Projects', href: '#', icon: FolderIcon },
+    { name: 'Calendar', href: '#', icon: CalendarIcon },
+    { name: 'Documents', href: '#', icon: DocumentDuplicateIcon },
+    { name: 'Reports', href: '#', icon: ChartPieIcon },
 ]
 const teams = [
     { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
@@ -23,6 +24,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Sidebar() {
+    const path = usePathname()
     const [sidebarOpen, setSidebarOpen] = useState(false)
 
     return (
@@ -86,7 +88,7 @@ export default function Sidebar() {
                                                             <Link
                                                                 href={item.href}
                                                                 className={classNames(
-                                                                    item.current
+                                                                    item.href === path
                                                                         ? 'bg-gray-800 text-white'
                                                                         : 'text-gray-400 hover:text-white hover:bg-gray-800',
                                                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
@@ -160,7 +162,7 @@ export default function Sidebar() {
                                             <Link
                                                 href={item.href}
                                                 className={classNames(
-                                                    item.current
+                                                    item.href === path
                                                         ? 'bg-gray-800 text-white'
                                                         : 'text-gray-400 hover:text-white hover:bg-gray-800',
                                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'

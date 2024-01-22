@@ -1,9 +1,9 @@
 'use client';
 import { Network, Alchemy, OwnedNft } from "alchemy-sdk";
 import { useEffect, useState } from "react";
+import PropertyCard from '../components/PropertyCard'
 
-const settings = { apiKey: "7co8yUG-z7vG2h1jZaThl4p1S1OPeNH9", network: Network.ETH_SEPOLIA };
-const alchemy = new Alchemy(settings);
+const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: Network.ETH_SEPOLIA });
 
 const products = [
   {
@@ -87,31 +87,16 @@ export default function Page() {
         <h2 className="sr-only">Products</h2>
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-4">
           {products.map((product) => (
-            <div
-              key={product.id}
-              className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
-            >
-              <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-60">
-                <img
-                  src={product.imageSrc}
-                  alt={product.imageAlt}
-                  className="h-full w-full object-cover object-center sm:h-full sm:w-full"
-                />
-              </div>
-              <div className="flex flex-1 flex-col space-y-2 p-4">
-                <h3 className="text-sm font-medium text-gray-900">
-                  <a href={product.href}>
-                    <span aria-hidden="true" className="absolute inset-0" />
-                    {product.name}
-                  </a>
-                </h3>
-                <div className="flex flex-1 flex-col justify-end">
-                  <p className="text-sm italic text-gray-500">{product.options}</p>
-                  <p className="text-base font-medium text-gray-900">{product.price}</p>
-                  <p className="text-base font-medium text-gray-900">{nftCollection.map(nft => nft.tokenId === product.id ? "my stake: " + nft.balance : "")}</p>
-                </div>
-              </div>
-            </div>
+            <PropertyCard
+              id={product.id}
+              imageSrc={product.imageSrc}
+              imageAlt={product.imageAlt}
+              href={product.href}
+              name={product.name}
+              options={product.options}
+              price={product.price}
+              myStake={nftCollection.find(nft => nft.tokenId === product.id)?.balance}
+            />
           ))}
         </div>
       </div>
