@@ -88,6 +88,7 @@ export default function Page() {
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-4">
           {products.map((product) => (
             <PropertyCard
+              key={product.id}
               id={product.id}
               imageSrc={product.imageSrc}
               imageAlt={product.imageAlt}
