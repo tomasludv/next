@@ -2,6 +2,8 @@
 import { Network, Alchemy, OwnedNft } from "alchemy-sdk";
 import { useEffect, useState } from "react";
 import PropertyCard from '../components/PropertyCard'
+import { useAccount } from 'wagmi'
+import { watchAccount } from '@wagmi/core'
 
 const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: Network.ETH_SEPOLIA });
 
@@ -69,16 +71,21 @@ const products = [
 ]
 
 export default function Page() {
-
+  const { address } = useAccount()
   const [nftCollection, setNftCollection] = useState<OwnedNft[]>([]);
 
-  const getNFTs = async () => {
-    const nfts = await alchemy.nft.getNftsForOwner("0x100e9EC1D6Ab05b41546213095859001C3c6A874", { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
+  const getNFTs = async (walletAddress: string) => {
+    const nfts = await alchemy.nft.getNftsForOwner(walletAddress, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
     setNftCollection(nfts.ownedNfts);
   }
 
   useEffect(() => {
-    getNFTs();
+    if (address) getNFTs(address);
+
+    watchAccount((newAccount) => {
+      if (newAccount.address) getNFTs(newAccount.address)
+      else setNftCollection([])
+    })
   }, [])
 
   return (
