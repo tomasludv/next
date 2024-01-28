@@ -10,13 +10,11 @@ import { useNetwork } from 'wagmi'
 interface NftData {
   id: string;
   name: string;
-  href: string;
   price: string;
-  description: string;
   options: string;
-  imageSrc: string;
-  imageAlt: string;
   chainId: number;
+  original: string;
+  images: string[];
 }
 
 export default function Page() {
@@ -80,9 +78,9 @@ export default function Page() {
                 <PropertyCard
                   key={nftJson.id}
                   id={nftJson.id}
-                  imageSrc={nftJson.imageSrc}
-                  imageAlt={nftJson.imageAlt}
-                  href={nftJson.href}
+                  imageSrc={nftJson.images[0]}
+                  imageAlt={nftJson.images[0]}
+                  href={"/properties/" + nftJson.id}
                   name={nftJson.name}
                   options={nftJson.options}
                   price={nftJson.price}

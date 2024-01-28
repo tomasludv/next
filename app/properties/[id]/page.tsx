@@ -64,13 +64,11 @@ function classNames(...classes: string[]) {
 interface NftData {
     id: string;
     name: string;
-    href: string;
     price: string;
-    description: string;
     options: string;
-    imageSrc: string;
-    imageAlt: string;
     chainId: number;
+    original: string;
+    images: string[];
 }
 
 export default function Example({ params }: { params: { id: string } }) {
@@ -122,36 +120,61 @@ export default function Example({ params }: { params: { id: string } }) {
                 </nav>
 
                 {/* Image gallery */}
-                <div className="mx-autoxxx mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-x-8 lg:px-8">
+                <div className="mx-autoxxx mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-5 lg:gap-x-8 lg:px-8">
                     <div className="col-span-2 aspect-h-4 aspect-w-4 hidden overflow-hidden rounded-lg lg:block">
                         <img
-                            src={nftJson?.imageSrc}
-                            alt={nftJson?.imageAlt}
+                            src={nftJson?.images[0]}
+                            alt={nftJson?.images[0]}
                             className="h-full w-full object-cover object-center"
                         />
                     </div>
                     <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
                         <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
                             <img
-                                src={product.images[1].src}
-                                alt={product.images[1].alt}
+                                src={nftJson?.images[1]}
+                                alt={nftJson?.images[1]}
                                 className="h-full w-full object-cover object-center"
                             />
                         </div>
                         <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
                             <img
-                                src={product.images[2].src}
-                                alt={product.images[2].alt}
+                                src={nftJson?.images[2]}
+                                alt={nftJson?.images[2]}
                                 className="h-full w-full object-cover object-center"
                             />
                         </div>
                     </div>
-                    <div className="aspect-h-4 aspect-w-4 lg:aspect-h-4 lg:aspect-w-4 sm:overflow-hidden sm:rounded-lg">
-                        <img
-                            src={product.images[3].src}
-                            alt={product.images[3].alt}
-                            className="h-full w-full object-cover object-center"
-                        />
+                    <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+                        <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
+                            <img
+                                src={nftJson?.images[3]}
+                                alt={nftJson?.images[3]}
+                                className="h-full w-full object-cover object-center"
+                            />
+                        </div>
+                        <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
+                            <img
+                                src={nftJson?.images[4]}
+                                alt={nftJson?.images[4]}
+                                className="h-full w-full object-cover object-center"
+                            />
+                        </div>
+                    </div>
+                    <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+                        <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
+                            <img
+                                src={nftJson?.images[5]}
+                                alt={nftJson?.images[5]}
+                                className="h-full w-full object-cover object-center"
+                            />
+                        </div>
+                        <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
+                            <img
+                                src={nftJson?.images[6]}
+                                alt={nftJson?.images[6]}
+                                className="h-full w-full object-cover object-center"
+                            />
+                        </div>
                     </div>
                 </div>
 

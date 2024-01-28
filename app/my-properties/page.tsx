@@ -10,13 +10,11 @@ const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, netwo
 interface NftData {
     id: string;
     name: string;
-    href: string;
     price: string;
-    description: string;
     options: string;
-    imageSrc: string;
-    imageAlt: string;
     chainId: number;
+    original: string;
+    images: string[];
 }
 
 export default function Page() {
@@ -60,9 +58,9 @@ export default function Page() {
                                 <PropertyCard
                                     key={nftData.id}
                                     id={nftData.id}
-                                    imageSrc={nftData.imageSrc}
-                                    imageAlt={nftData.imageAlt}
-                                    href={nftData.href}
+                                    imageSrc={nftData.images[0]}
+                                    imageAlt={nftData.images[0]}
+                                    href={"/properties/" + nftData.id}
                                     name={nftData.name}
                                     options={nftData.options}
                                     price={nftData.price}

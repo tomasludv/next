@@ -5,6 +5,9 @@ import { usePathname } from 'next/navigation';
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon, } from '@heroicons/react/24/outline'
+import { prepareWriteContract, writeContract } from '@wagmi/core'
+import abi from '../abi/ERC20.json'
+import { useAccount } from 'wagmi'
 
 const navigation = [
     { name: 'New Properties', href: '/', icon: HomeIcon },
@@ -15,9 +18,8 @@ const navigation = [
     { name: 'Reports', href: '#', icon: ChartPieIcon },
 ]
 const teams = [
-    { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-    { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-    { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+    { id: 1, name: 'Faucet ETH', href: 'https://sepoliafaucet.com/', initial: 'F', current: false },
+    { id: 2, name: 'Mint USDC', href: 'https://gho.aave.com/faucet/', initial: 'M', current: false },
 ]
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -26,6 +28,19 @@ function classNames(...classes: string[]) {
 export default function Sidebar() {
     const path = usePathname()
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const { address } = useAccount()
+
+    const approve = async () => {
+        const { request } = await prepareWriteContract({
+            address: '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8',
+            abi: abi,
+            functionName: 'approve',
+            args: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B", 1000000000000000],
+            chainId: 11155111
+        })
+        const { hash } = await writeContract(request);
+        console.log(hash);
+    }
 
     return (
         <>
@@ -102,7 +117,7 @@ export default function Sidebar() {
                                                 </ul>
                                             </li>
                                             <li>
-                                                <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+                                                <div className="text-xs font-semibold leading-6 text-gray-400">Development</div>
                                                 <ul role="list" className="-mx-2 mt-2 space-y-1">
                                                     {teams.map((team) => (
                                                         <li key={team.name}>
@@ -122,6 +137,15 @@ export default function Sidebar() {
                                                             </a>
                                                         </li>
                                                     ))}
+                                                    <li>
+                                                        <button
+                                                            type="button"
+                                                            onClick={approve}
+                                                            className='w-full text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'>
+                                                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">A</span>
+                                                            <span className="truncate">Approve USDC</span>
+                                                        </button>
+                                                    </li>
                                                 </ul>
                                             </li>
                                             <li className="mt-auto">
@@ -176,7 +200,7 @@ export default function Sidebar() {
                                 </ul>
                             </li>
                             <li>
-                                <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+                                <div className="text-xs font-semibold leading-6 text-gray-400">Development</div>
                                 <ul role="list" className="-mx-2 mt-2 space-y-1">
                                     {teams.map((team) => (
                                         <li key={team.name}>
@@ -196,6 +220,15 @@ export default function Sidebar() {
                                             </a>
                                         </li>
                                     ))}
+                                    <li>
+                                        <button
+                                            type='button'
+                                            onClick={approve}
+                                            className='w-full text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'                                            >
+                                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">A</span>
+                                            <span className="truncate">Approve USDC</span>
+                                        </button>
+                                    </li>
                                 </ul>
                             </li>
                             <li className="mt-auto">
