@@ -1,6 +1,4 @@
-import { prepareWriteContract, writeContract } from '@wagmi/core'
-import abi from '../abi/MinocNft.json'
-import { useAccount } from 'wagmi'
+import MintNftButton from './MintNftButton'
 
 interface PropertyCardProps {
     id: string;
@@ -14,20 +12,6 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({ id, imageSrc, imageAlt, href, name, options, price, myStake }: PropertyCardProps) => {
-    const { address } = useAccount()
-
-    const mintNft = async (id: number) => {
-        const { request } = await prepareWriteContract({
-            address: '0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B',
-            abi: abi,
-            functionName: 'mint',
-            args: [id, 1000000],
-            chainId: 11155111
-        })
-        const { hash } = await writeContract(request);
-        console.log(hash);
-    }
-
     return (
         <div key={id} className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"        >
             <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-60">
@@ -50,13 +34,7 @@ const PropertyCard = ({ id, imageSrc, imageAlt, href, name, options, price, mySt
                         }
                     </div>
                     <div className="flex flex-1 flex-col justify-end">
-                        {address &&
-                            <button
-                                type="button"
-                                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                onClick={() => mintNft(Number(id))}
-                            >Mint</button>
-                        }
+                        <MintNftButton id={id} amount='1000000' />
                     </div>
                 </div>
             </div>

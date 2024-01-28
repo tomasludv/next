@@ -8,6 +8,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/176/images/2512/1400px_main_96Pqw19gPC39yOptbd67GrNYI9X7yHOSD6al9ljP.jpeg',
         imageAlt: 'Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green.',
+        chainId: 11155111,
     },
     {
         id: "1",
@@ -18,6 +19,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/175/images/2488/1000px_main_9g2DpYWR0D114M0jf0EGNZ7guhki4OOlPjombmOu.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
     {
         id: "2",
@@ -28,6 +30,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/177/images/2514/1510px_main_HyWV0iATCO9i0QODfYPj8VZJngDih1Y4MZOljENK.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
     {
         id: "3",
@@ -38,6 +41,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/174/images/2481/1920px_main_Xfqiy0vkRgpBuKXsD9KdvlKAf2p5fHq2VAgq44Z0.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
     {
         id: "4",
@@ -48,6 +52,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/179/images/2546/2400px_main_btHM6GX5okVRqZZVtGsdLVfnYbk0Gl8zEUba5M6n.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
     {
         id: "5",
@@ -58,6 +63,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/180/images/2565/1000px_main_wTQk1XZ0Jqc4vhW5ZkjPAFFGJP0OVz8QwC1kQypF.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
     {
         id: "6",
@@ -68,6 +74,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/183/images/2605/2400px_main_cBfGzDp0JOTc1j9XrPcTgVN2MTnIwPPUNVqMagxs.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
     {
         id: "7",
@@ -78,6 +85,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/183/images/2606/2340px_main_5C0BaaTwfRlnJj30uaF1RzrukW49NQNZCeyijY6y.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
     {
         id: "8",
@@ -88,6 +96,7 @@ const data = [
         options: 'Dubai',
         imageSrc: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/178/images/2540/1280px_main_GkdBL6AueDt4Kqu1cGKOKNeCRSrnHuiWbbvBhbN6.jpeg',
         imageAlt: 'Front of plain black t-shirt.',
+        chainId: 11155111,
     },
 ]
 

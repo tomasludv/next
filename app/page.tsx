@@ -1,11 +1,11 @@
 'use client';
-import { Network, Alchemy, OwnedNft } from "alchemy-sdk";
+
+import { Network, Alchemy, Nft, OwnedNft } from "alchemy-sdk";
 import { useEffect, useState } from "react";
 import PropertyCard from '../components/PropertyCard'
 import { useAccount } from 'wagmi'
-import { watchAccount } from '@wagmi/core'
-
-const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: Network.ETH_SEPOLIA });
+import { watchAccount, watchNetwork } from '@wagmi/core'
+import { useNetwork } from 'wagmi'
 
 interface NftData {
   id: string;
@@ -16,34 +16,56 @@ interface NftData {
   options: string;
   imageSrc: string;
   imageAlt: string;
+  chainId: number;
 }
 
 export default function Page() {
-  const { address } = useAccount()
-  const [nftData, setNftData] = useState<NftData[]>([]);
-  const [nftCollection, setNftCollection] = useState<OwnedNft[]>([]);
+  const { chain } = useNetwork();
+  const { address } = useAccount();
+  const [nftsJson, setNftsJson] = useState<NftData[]>([]);
+  const [nftsOwned, setNftsOwned] = useState<OwnedNft[]>([]);
 
-  const getNFTs = async (walletAddress: string) => {
-    const nfts = await alchemy.nft.getNftsForOwner(walletAddress, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
-    setNftCollection(nfts.ownedNfts);
+  const getNftsOwned = async (chainId: number, walletAddress: string) => {
+    if (chainId) {
+      var network: Network;
+      switch (chainId) {
+        case 11155111: {
+          network = Network.ETH_SEPOLIA;
+          break;
+        }
+        default: {
+          network = Network.ETH_MAINNET;
+          break;
+        }
+      }
+      const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: network });
+      const nfts = await alchemy.nft.getNftsForOwner(walletAddress, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
+      setNftsOwned(nfts.ownedNfts);
+    } else {
+      setNftsOwned([]);
+    }
   }
 
-  const getNftData = async () => {
+  const getNftsJson = async () => {
     const response = await fetch('/api');
     const body = await response.json();
-    setNftData(body);
+    setNftsJson(body);
   }
 
   useEffect(() => {
-    getNftData();
+    getNftsJson();
 
-    if (address) {
-      getNFTs(address);
-    }
+    if (chain && address) getNftsOwned(chain.id, address)
+    else setNftsOwned([])
 
-    watchAccount((newAccount) => {
-      if (newAccount.address) getNFTs(newAccount.address)
-      else setNftCollection([])
+    watchAccount(account => {
+      if (chain && account.address) getNftsOwned(chain.id, account.address)
+      else setNftsOwned([])
+    })
+
+    watchNetwork(network => {
+      if (network.chain && address) getNftsOwned(network.chain.id, address)
+      else setNftsOwned([])
     })
   }, [])
 
@@ -52,19 +74,22 @@ export default function Page() {
       <div className="max-w-2xl px-4 py-4 lg:max-w-screen-2xl">
         <h2 className="sr-only">Products</h2>
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-4">
-          {nftData.map((product) => (
-            <PropertyCard
-              key={product.id}
-              id={product.id}
-              imageSrc={product.imageSrc}
-              imageAlt={product.imageAlt}
-              href={product.href}
-              name={product.name}
-              options={product.options}
-              price={product.price}
-              myStake={nftCollection.find(nft => nft.tokenId === product.id)?.balance}
-            />
-          ))}
+          {nftsJson.map(nftJson => {
+            if (chain && nftJson.chainId === chain.id)
+              return (
+                <PropertyCard
+                  key={nftJson.id}
+                  id={nftJson.id}
+                  imageSrc={nftJson.imageSrc}
+                  imageAlt={nftJson.imageAlt}
+                  href={nftJson.href}
+                  name={nftJson.name}
+                  options={nftJson.options}
+                  price={nftJson.price}
+                  myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftJson.id)?.balance}
+                />
+              )
+          })}
         </div>
       </div>
     </div>
