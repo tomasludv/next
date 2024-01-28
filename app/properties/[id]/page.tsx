@@ -90,15 +90,15 @@ export default function Example({ params }: { params: { id: string } }) {
     return (
         <div className="bg-white">
             {/* Image gallery */}
-            <div className="mx-autoxxx mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-5 lg:gap-x-8 lg:px-8">
-                <div className="col-span-2 aspect-h-4 aspect-w-4 hidden overflow-hidden rounded-lg lg:block">
+            <div className="mx-autoxxx mt-6 max-w-2xl sm:px-6 grid gap-x-4 grid-cols-5 grid lg:grid lg:max-w-7xl lg:grid-cols-5 lg:gap-x-8 lg:px-8">
+                <div className="col-span-2 aspect-h-4 aspect-w-4 hiddenxxx overflow-hidden rounded-lg lg:block">
                     <img
                         src={nftJson?.images[0]}
                         alt={nftJson?.images[0]}
                         className="h-full w-full object-cover object-center"
                     />
                 </div>
-                <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+                <div className="hiddenxxx grid lg:grid lg:grid-cols-1 gap-y-4 lg:gap-y-8">
                     <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
                         <img
                             src={nftJson?.images[1]}
@@ -114,7 +114,7 @@ export default function Example({ params }: { params: { id: string } }) {
                         />
                     </div>
                 </div>
-                <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+                <div className="hiddenxxx grid lg:grid lg:grid-cols-1 gap-y-4 lg:gap-y-8">
                     <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
                         <img
                             src={nftJson?.images[3]}
@@ -130,7 +130,7 @@ export default function Example({ params }: { params: { id: string } }) {
                         />
                     </div>
                 </div>
-                <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+                <div className="hiddenxxx grid lg:grid lg:grid-cols-1 gap-y-4 lg:gap-y-8">
                     <div className="aspect-h-2 aspect-w-2 overflow-hidden rounded-lg">
                         <img
                             src={nftJson?.images[5]}
