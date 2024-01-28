@@ -1,6 +1,6 @@
 'use client';
 
-import { Network, Alchemy, Nft, OwnedNft } from "alchemy-sdk";
+import { Network, Alchemy, OwnedNft } from "alchemy-sdk";
 import { useEffect, useState } from "react";
 import PropertyCard from '../components/PropertyCard'
 import { useAccount } from 'wagmi'

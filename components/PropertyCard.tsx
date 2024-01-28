@@ -20,7 +20,7 @@ const PropertyCard = ({ id, imageSrc, imageAlt, href, name, options, price, mySt
             </div>
             <div className="flex flex-1 flex-col space-y-2 p-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                    <a href={href}>
+                    <a href={"/properties/" + id}>
                         <span aria-hidden="true" className="absolutexxx inset-0xxx" />
                         {name}
                     </a>
