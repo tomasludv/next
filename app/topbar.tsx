@@ -25,6 +25,9 @@ export default function Topbar() {
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
                 <div className="flex items-center flex-1 gap-x-4 lg:gap-x-6">
                     {address &&
+                        <a href="https://sepoliafaucet.com/" className="font-semibold text-indigo-500">Sepolia ETH</a>
+                    }
+                    {address &&
                         <a href="https://gho.aave.com/faucet/" className="font-semibold text-indigo-500">Mint USDC</a>
                     }
                     {address &&
