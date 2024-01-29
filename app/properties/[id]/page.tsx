@@ -7,28 +7,6 @@ import { RadioGroup } from '@headlessui/react'
 const product = {
     name: '1 Bed In West Avenue, Dubai Marina (206)',
     price: '$192',
-    href: '/properties/0',
-    breadcrumbs: [
-        { id: 1, name: 'Properties', href: '/' },
-    ],
-    images: [
-        {
-            src: 'https://stake-dev-env.s3.eu-west-1.amazonaws.com/properties/180/images/2565/1000px_main_wTQk1XZ0Jqc4vhW5ZkjPAFFGJP0OVz8QwC1kQypF.jpeg',
-            alt: 'Two each of gray, white, and black shirts laying flat.',
-        },
-        {
-            src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg',
-            alt: 'Model wearing plain black basic tee.',
-        },
-        {
-            src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg',
-            alt: 'Model wearing plain gray basic tee.',
-        },
-        {
-            src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg',
-            alt: 'Model wearing plain white basic tee.',
-        },
-    ],
     colors: [
         { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
         { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
@@ -157,7 +135,7 @@ export default function Example({ params }: { params: { id: string } }) {
                 {/* Options */}
                 <div className="mt-4 lg:row-span-3 lg:mt-0">
                     <h2 className="sr-only">Product information</h2>
-                    <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+                    <p className="text-3xl tracking-tight text-gray-900">{nftJson?.price}</p>
 
                     {/* Reviews */}
                     <div className="mt-6">
