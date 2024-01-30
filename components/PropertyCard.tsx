@@ -32,9 +32,10 @@ const PropertyCard = ({ id, imageSrc, imageAlt, href, name, options, price, mySt
                         {myStake &&
                             (<p className="text-base font-medium text-gray-900">my stake: {myStake}</p>)
                         }
+                        <MintNftButton id={id} />
                     </div>
-                    <div className="flex flex-1 flex-col justify-end">
-                        <MintNftButton id={id} amount='1000000' />
+                    <div className="flex hidden flex-1 flex-col justify-end">
+                        <MintNftButton id={id} />
                     </div>
                 </div>
             </div>

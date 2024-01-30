@@ -4,18 +4,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon, } from '@heroicons/react/24/outline'
+import { CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { prepareWriteContract, writeContract } from '@wagmi/core'
 import abi from '../abi/ERC20.json'
 import { useAccount } from 'wagmi'
 
 const navigation = [
-    { name: 'New Properties', href: '/', icon: HomeIcon },
-    { name: 'My Properties', href: '/my-properties', icon: UsersIcon },
-    { name: 'Projects', href: '#', icon: FolderIcon },
-    { name: 'Calendar', href: '#', icon: CalendarIcon },
-    { name: 'Documents', href: '#', icon: DocumentDuplicateIcon },
-    { name: 'Reports', href: '#', icon: ChartPieIcon },
+    { name: 'Funding Round', href: '/', icon: HomeIcon },
+    { name: 'My Properties', href: '/my-properties', icon: ChartPieIcon },
 ]
 const teams = [
     { id: 1, name: 'Faucet ETH', href: 'https://sepoliafaucet.com/', initial: 'F', current: false },
