@@ -23,7 +23,7 @@ const MintNftButton = ({ id }: MintNftButtonProps) => {
 
     return (
         <>
-            <div className="mt-2 flex rounded-md shadow-sm">
+            <div className="mt-4 flex rounded-md shadow-sm">
                 <div className="relative flex flex-grow items-stretch focus-within:z-10">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                         <img src='https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/usdc.png' className="h-5 w-5" aria-hidden="true" />
@@ -39,7 +39,7 @@ const MintNftButton = ({ id }: MintNftButtonProps) => {
             </div>
             <button
                 type="button"
-                className="mt-2 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 onClick={() => mintNft(Number(id), Number(amount))}
             >Mint</button>
         </>
