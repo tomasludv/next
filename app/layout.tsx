@@ -14,8 +14,8 @@ function RootLayout({ children }: { children: React.ReactNode }) {
           <div className="lg:pl-72">
 
             <Topbar />
-            <main className="py-10xxx">
-              <div className="px-4xxx sm:px-6xxx lg:px-8xxx">
+            <main className="py-10">
+              <div className="px-4 sm:px-6 lg:px-8">
                 {children}
               </div>
             </main>
