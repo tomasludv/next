@@ -37,9 +37,9 @@ const PropertyCard = ({ id, imageSrc, imageAlt, name, price, funded, myStake }: 
                     (<p className="text-base font-medium text-gray-900">my stake: {myStake}</p>)
                 }
                 <div className="flex flex-col space-y-2">
-                    <div className="flex flex-row space-y-2">
-                        <p className="flex-1 text-xl font-medium text-indigo-600">{currencyformatter.format(price)}</p>
-                        <p className="flex-1 text-sm font-medium text-gray-900 text-right">{percentageFormatter.format(funded / price)} funded</p>
+                    <div className="flex flex-row justify-between items-end">
+                        <p className="text-xl font-medium text-indigo-600">{currencyformatter.format(price)}</p>
+                        <p className="text-base font-medium text-gray-600">{percentageFormatter.format(funded / price) + " funded"}</p>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                         <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: 100 * funded / price + "%" }}></div>
