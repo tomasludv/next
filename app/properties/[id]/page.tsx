@@ -66,7 +66,7 @@ export default function Example({ params }: { params: { id: string } }) {
     }, [])
 
     return (
-        <div className="bg-white">
+        <div className="">
             {/* Image gallery */}
             <div className="mx-autoxxx mt-6 max-w-2xl sm:px-6 grid gap-x-4 grid-cols-5 grid lg:grid lg:max-w-7xl lg:grid-cols-5 lg:gap-x-8 lg:px-8">
                 <div className="col-span-2 aspect-h-4 aspect-w-4 hiddenxxx overflow-hidden rounded-lg lg:block">
