@@ -48,27 +48,25 @@ export default function Page() {
     }, [])
 
     return (
-        <div className="">
-            <div className="max-w-2xl px-4 py-4 lg:max-w-screen-2xl">
-                <h2 className="sr-only">Products</h2>
-                <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-6">
-                    {nftsData.map(nftData => {
-                        if (chain && nftData.chainId === chain.id && nftsOwned.find(nftOwned => nftOwned.tokenId === nftData.id))
-                            return (
-                                <PropertyCard
-                                    key={nftData.id}
-                                    id={nftData.id}
-                                    imageSrc={nftData.images[0]}
-                                    imageAlt={nftData.images[0]}
-                                    href={"/properties/" + nftData.id}
-                                    name={nftData.name}
-                                    options={nftData.options}
-                                    price={nftData.price}
-                                    myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftData.id)?.balance}
-                                />
-                            )
-                    })}
-                </div>
+        <div className="max-w-2xl lg:max-w-screen-2xl">
+            <h2 className="sr-only">Products</h2>
+            <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-4 lg:gap-x-6">
+                {nftsData.map(nftData => {
+                    if (chain && nftData.chainId === chain.id && nftsOwned.find(nftOwned => nftOwned.tokenId === nftData.id))
+                        return (
+                            <PropertyCard
+                                key={nftData.id}
+                                id={nftData.id}
+                                imageSrc={nftData.images[0]}
+                                imageAlt={nftData.images[0]}
+                                href={"/properties/" + nftData.id}
+                                name={nftData.name}
+                                options={nftData.options}
+                                price={nftData.price}
+                                myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftData.id)?.balance}
+                            />
+                        )
+                })}
             </div>
         </div>
     )
