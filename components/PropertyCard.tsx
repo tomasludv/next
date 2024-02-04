@@ -10,17 +10,9 @@ interface PropertyCardProps {
     myStake: string | undefined;
 }
 
-const currencyformatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-});
-
-const percentageFormatter = new Intl.NumberFormat("en-US", {
-    style: 'percent',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-});
+const currencyformatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0, });
+const percentageZeroDecimalsFormatter = new Intl.NumberFormat("en-US", { style: 'percent', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+const percentageSixDecimalsFormatter = new Intl.NumberFormat("en-US", { style: 'percent', minimumFractionDigits: 0, maximumFractionDigits: 6 });
 
 const PropertyCard = ({ id, imageSrc, imageAlt, name, price, funded, myStake }: PropertyCardProps) => {
     return (
@@ -39,10 +31,10 @@ const PropertyCard = ({ id, imageSrc, imageAlt, name, price, funded, myStake }: 
                 <div className="flex flex-col space-y-2">
                     <div className="flex flex-row justify-between items-end">
                         <p className="text-xl font-medium text-indigo-600">{currencyformatter.format(price)}</p>
-                        <p className="text-base font-medium text-gray-600">{percentageFormatter.format(funded / price) + " funded"}</p>
+                        <p className="text-sm font-medium text-gray-600">{percentageZeroDecimalsFormatter.format(funded / price) + " funded"}</p>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                        <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: 100 * funded / price + "%" }}></div>
+                        <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: percentageSixDecimalsFormatter.format(funded / price) }}></div>
                     </div>
                 </div>
                 <a className='flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>Mint</a>

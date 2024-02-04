@@ -4,19 +4,9 @@ import { useEffect, useState } from "react";
 import PropertyCard from '../../components/PropertyCard'
 import { useAccount, useNetwork } from 'wagmi'
 import { watchAccount } from '@wagmi/core'
+import NftData from '../../interfaces/NftData'
 
 const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: Network.ETH_SEPOLIA });
-
-interface NftData {
-    id: string;
-    name: string;
-    price: number;
-    funded: number;
-    options: string;
-    chainId: number;
-    original: string;
-    images: string[];
-}
 
 export default function Page() {
     const { chain } = useNetwork();

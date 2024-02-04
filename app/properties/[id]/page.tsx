@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import MintNftButton from '../../../components/MintNftButton'
+import NftData from '../../../interfaces/NftData'
 
 const product = {
     name: '1 Bed In West Avenue, Dubai Marina (206)',
@@ -37,16 +38,6 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
-}
-
-interface NftData {
-    id: string;
-    name: string;
-    price: string;
-    options: string;
-    chainId: number;
-    original: string;
-    images: string[];
 }
 
 export default function Example({ params }: { params: { id: string } }) {

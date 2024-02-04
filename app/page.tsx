@@ -6,17 +6,7 @@ import PropertyCard from '../components/PropertyCard'
 import { useAccount } from 'wagmi'
 import { watchAccount, watchNetwork } from '@wagmi/core'
 import { useNetwork } from 'wagmi'
-
-interface NftData {
-  id: string;
-  name: string;
-  price: number;
-  funded: number;
-  options: string;
-  chainId: number;
-  original: string;
-  images: string[];
-}
+import NftData from '../interfaces/NftData'
 
 export default function Page() {
   const { chain } = useNetwork();
