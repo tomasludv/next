@@ -10,7 +10,8 @@ const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, netwo
 interface NftData {
     id: string;
     name: string;
-    price: string;
+    price: number;
+    funded: number;
     options: string;
     chainId: number;
     original: string;
@@ -63,6 +64,7 @@ export default function Page() {
                                 name={nftData.name}
                                 options={nftData.options}
                                 price={nftData.price}
+                                funded={nftData.funded}
                                 myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftData.id)?.balance}
                             />
                         )

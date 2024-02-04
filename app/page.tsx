@@ -10,7 +10,8 @@ import { useNetwork } from 'wagmi'
 interface NftData {
   id: string;
   name: string;
-  price: string;
+  price: number;
+  funded: number;
   options: string;
   chainId: number;
   original: string;
@@ -83,6 +84,7 @@ export default function Page() {
                 name={nftJson.name}
                 options={nftJson.options}
                 price={nftJson.price}
+                funded={nftJson.funded}
                 myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftJson.id)?.balance}
               />
             )

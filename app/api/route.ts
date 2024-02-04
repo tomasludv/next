@@ -2,7 +2,8 @@ const data = [
     {
         id: "0",
         name: 'Studio in Upside Living, Business Bay (2516)',
-        price: 'AED 1,352,888',
+        price: 235288,
+        funded: 20000,
         options: 'Dubai',
         chainId: 11155111,
         original: "https://getstake.com/home/properties/view/167",
@@ -19,7 +20,8 @@ const data = [
     {
         id: "1",
         name: '1 Bed in Wilton Park Residences, MBR City',
-        price: 'AED 1,440,000',
+        price: 214400,
+        funded: 189000,
         options: 'Dubai',
         chainId: 11155111,
         original: "https://getstake.com/home/properties/view/171",
@@ -37,7 +39,8 @@ const data = [
     {
         id: "2",
         name: '1 Bed in Executive Residences, Dubai Hills (111)',
-        price: 'AED 1,050,000',
+        price: 205000,
+        funded: 200000,
         description: 'Look like a visionary CEO and wear the same black t-shirt every day.',
         options: 'Dubai',
         chainId: 11155111,
@@ -58,7 +61,8 @@ const data = [
     {
         id: "3",
         name: '1 Bed in Sky Gardens, DIFC (1302)',
-        price: 'AED 1,600,000',
+        price: 320000,
+        funded: 255000,
         options: 'Dubai',
         chainId: 11155111,
         original: "https://getstake.com/home/properties/view/173",
@@ -78,7 +82,8 @@ const data = [
     {
         id: "4",
         name: '1 Bed in Al Andalus Tower B, Jumeirah Golf Estates (G03B)',
-        price: 'AED 1,280,663',
+        price: 258066,
+        funded: 0,
         options: 'Dubai',
         chainId: 11155111,
         original: "https://getstake.com/home/properties/view/155",
@@ -98,7 +103,8 @@ const data = [
     {
         id: "5",
         name: '1 Bed in Burj Views, Downtown Dubai (804)',
-        price: 'AED 1,476,000',
+        price: 297600,
+        funded: 140000,
         options: 'Dubai',
         chainId: 11155111,
         original: "https://getstake.com/home/properties/view/170",
@@ -117,7 +123,8 @@ const data = [
     {
         id: "6",
         name: '1 Bed in Rahaal 1, Madinat Jumeirah Living (414)',
-        price: 'AED 2,137,791',
+        price: 213779,
+        funded: 213779,
         options: 'Dubai',
         chainId: 11155111,
         original: "https://getstake.com/home/properties/view/142",
@@ -142,7 +149,8 @@ const data = [
     {
         id: "7",
         name: 'Studio in Sobha Hartland Greens, MBR City (6107)',
-        price: 'AED 877,000',
+        price: 167700,
+        funded: 46200,
         options: 'Dubai',
         chainId: 11155111,
         original: "https://getstake.com/home/properties/view/178",
@@ -160,7 +168,8 @@ const data = [
     {
         id: "8",
         name: 'Studio in Sobha Hartland Greens, MBR City (6107)',
-        price: 'AED 877,000',
+        price: 177700,
+        funded: 100000,
         options: 'Dubai',
         original: "https://getstake.com/home/properties/view/182",
         chainId: 11155111,
