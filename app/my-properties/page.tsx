@@ -55,6 +55,7 @@ export default function Page() {
                                 options={nftData.options}
                                 price={nftData.price}
                                 funded={nftData.funded}
+                                sqft={nftData.sqft}
                                 myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftData.id)?.balance}
                             />
                         )

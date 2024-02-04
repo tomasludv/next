@@ -75,6 +75,7 @@ export default function Page() {
                 options={nftJson.options}
                 price={nftJson.price}
                 funded={nftJson.funded}
+                sqft={nftJson.sqft}
                 myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftJson.id)?.balance}
               />
             )

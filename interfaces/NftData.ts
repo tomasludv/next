@@ -3,6 +3,7 @@ interface NftData {
     name: string;
     price: number;
     funded: number;
+    sqft: number;
     options: string;
     chainId: number;
     original: string;
