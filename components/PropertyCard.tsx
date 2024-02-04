@@ -11,7 +11,7 @@ interface PropertyCardProps {
 
 const PropertyCard = ({ id, imageSrc, imageAlt, name, price, myStake }: PropertyCardProps) => {
     return (
-        <div key={id} className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"        >
+        <div key={id} className="group relative flex flex-col overflow-hidden rounded-lg borderxxx border-gray-200xxx bg-white"        >
             <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-60">
                 <img src={imageSrc} alt={imageAlt} className="h-full w-full object-cover object-center sm:h-full sm:w-full"
                 />
