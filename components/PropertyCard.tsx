@@ -53,6 +53,10 @@ const PropertyCard = ({ id, imageSrc, imageAlt, name, price, funded, myStake, sq
                             <dt className="flex items-center text-sm text-gray-600">Price per square meter</dt>
                             <dd className="text-sm font-medium text-gray-900">{currencyformatter.format(price / sqft / 0.09290304)}</dd>
                         </div>
+                        <div className="flex items-center justify-between">
+                            <dt className="flex text-sm text-gray-600">Expected Rental Yield</dt>
+                            <dd className="text-sm font-medium text-gray-900">9.84%</dd>
+                        </div>
                     </dl>
                 </section>
                 <a className='hidden flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>Mint</a>
