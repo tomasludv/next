@@ -68,6 +68,9 @@ export default function Page() {
               <PropertyCard
                 key={nftJson.id}
                 id={nftJson.id}
+                disposition={nftJson.disposition}
+                building={nftJson.building}
+                community={nftJson.community}
                 imageSrc={nftJson.images[0]}
                 imageAlt={nftJson.images[0]}
                 href={"/properties/" + nftJson.id}

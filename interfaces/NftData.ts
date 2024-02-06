@@ -1,5 +1,8 @@
 interface NftData {
     id: string;
+    disposition: string;
+    building: string;
+    community: string;
     name: string;
     price: number;
     funded: number;

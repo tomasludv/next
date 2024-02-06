@@ -1,6 +1,9 @@
 const data = [
     {
         id: "0",
+        disposition: "Studio",
+        building: "Upside Living",
+        community: "Business Bay",
         name: 'Studio in Upside Living, Business Bay (2516)',
         price: 235288,
         funded: 20000,
@@ -20,6 +23,9 @@ const data = [
     },
     {
         id: "1",
+        disposition: "1 Bed",
+        building: "Wilton Park Residences",
+        community: "MBR City",
         name: '1 Bed in Wilton Park Residences, MBR City',
         price: 214400,
         funded: 189000,
@@ -40,6 +46,9 @@ const data = [
     },
     {
         id: "2",
+        disposition: "1 Bed",
+        building: "Executive Residences",
+        community: "Dubai Hills",
         name: '1 Bed in Executive Residences, Dubai Hills (111)',
         price: 205000,
         funded: 200000,
@@ -63,6 +72,9 @@ const data = [
     },
     {
         id: "3",
+        disposition: "1 Bed",
+        building: "Sky Gardens",
+        community: "DIFC",
         name: '1 Bed in Sky Gardens, DIFC (1302)',
         price: 320000,
         funded: 255000,
@@ -85,6 +97,9 @@ const data = [
     },
     {
         id: "4",
+        disposition: "1 Bed",
+        building: "Al Andalus Tower B",
+        community: "Jumeirah Golf Estates",
         name: '1 Bed in Al Andalus Tower B, Jumeirah Golf Estates (G03B)',
         price: 258066,
         funded: 0,
@@ -107,6 +122,9 @@ const data = [
     },
     {
         id: "5",
+        disposition: "1 Bed",
+        building: "Burj Views",
+        community: "Downtown Dubai",        
         name: '1 Bed in Burj Views, Downtown Dubai (804)',
         price: 297600,
         funded: 140000,
@@ -128,6 +146,9 @@ const data = [
     },
     {
         id: "6",
+        disposition: "1 Bed",
+        building: "Rahaal 1",
+        community: "Madinat Jumeirah Living",   
         name: '1 Bed in Rahaal 1, Madinat Jumeirah Living (414)',
         price: 213779,
         funded: 213779,
@@ -155,6 +176,9 @@ const data = [
     },
     {
         id: "7",
+        disposition: "Studio",
+        building: "Sobha Hartland Greens",
+        community: "MBR City",   
         name: 'Studio in Sobha Hartland Greens, MBR City (6107)',
         price: 167700,
         funded: 46200,
@@ -175,6 +199,9 @@ const data = [
     },
     {
         id: "8",
+        disposition: "Studio",
+        building: "Sobha Hartland Greens",
+        community: "MBR City",   
         name: 'Studio in Sobha Hartland Greens, MBR City (6107)',
         price: 177700,
         funded: 100000,

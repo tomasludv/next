@@ -48,6 +48,9 @@ export default function Page() {
                             <PropertyCard
                                 key={nftData.id}
                                 id={nftData.id}
+                                disposition={nftData.disposition}
+                                building={nftData.building}
+                                community={nftData.community}
                                 imageSrc={nftData.images[0]}
                                 imageAlt={nftData.images[0]}
                                 href={"/properties/" + nftData.id}

@@ -1,5 +1,8 @@
 interface PropertyCardProps {
     id: string;
+    disposition: string;
+    building: string;
+    community: string;
     imageSrc: string;
     imageAlt: string;
     href: string;
@@ -16,7 +19,7 @@ const currencyformatter = new Intl.NumberFormat('en-US', { style: 'currency', cu
 const percentageZeroDecimalsFormatter = new Intl.NumberFormat("en-US", { style: 'percent', minimumFractionDigits: 0, maximumFractionDigits: 0 });
 const percentageSixDecimalsFormatter = new Intl.NumberFormat("en-US", { style: 'percent', minimumFractionDigits: 0, maximumFractionDigits: 6 });
 
-const PropertyCard = ({ id, imageSrc, imageAlt, name, price, funded, myStake, sqft }: PropertyCardProps) => {
+const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt, name, price, funded, myStake, sqft }: PropertyCardProps) => {
     return (
         <div key={id} className="group relative flex flex-col overflow-hidden rounded-lg borderxxx border-gray-200xxx bg-white"        >
             <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-60">
@@ -25,7 +28,7 @@ const PropertyCard = ({ id, imageSrc, imageAlt, name, price, funded, myStake, sq
             <div className="flex flex-1 flex-col space-y-4 p-4 justify-end">
                 <a className="flex-1 text-xl font-medium text-gray-900" href={"/properties/" + id}>
                     <span aria-hidden="true" className="absolute inset-0" />
-                    {name}
+                    {disposition + " in " + building + ", " + community + ", Dubai"}
                 </a>
                 {myStake &&
                     (<p className="hidden text-base font-medium text-gray-900">my stake: {myStake}</p>)
@@ -46,7 +49,7 @@ const PropertyCard = ({ id, imageSrc, imageAlt, name, price, funded, myStake, sq
                             <dd className="text-sm font-medium text-gray-900">Apartment</dd>
                         </div>
                         <div className="flex items-center justify-between">
-                            <dt className="text-sm text-gray-600">Property size</dt>
+                            <dt className="text-sm text-gray-600">Property Size</dt>
                             <dd className="text-sm font-medium text-gray-900">{numberFormatter.format(sqft * 0.09290304) + " square meters"}</dd>
                         </div>
                         <div className="flex items-center justify-between">
