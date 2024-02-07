@@ -18,7 +18,7 @@ export default function TypeTab() {
             <div className='flex'>
                 <nav className="flex shrink space-x-2 bg-white p-1.5 rounded-full" aria-label="Tabs">
                     {tabs.map((tab) => (
-                        <a key={tab.name} href={tab.href} className={classNames(tab.href === path ? 'bg-indigo-600 text-white' : 'text-gray-900 hover:text-gray-700', 'min-w-32 rounded-full p-2 text-sm font-medium text-center hover:bg-indigo-600 hover:text-white')} aria-current={tab.current ? 'page' : undefined}>{tab.name}</a>
+                        <a key={tab.name} href={tab.href} className={classNames(tab.href === path ? 'bg-indigo-600 text-white' : 'text-gray-900 hover:text-gray-700', 'min-w-40 rounded-full p-2 text-sm font-medium text-center hover:bg-indigo-600 hover:text-white')} aria-current={tab.current ? 'page' : undefined}>{tab.name}</a>
                     ))}
                 </nav>
             </div>
