@@ -14,7 +14,7 @@ export default function TypeTab() {
     const path = usePathname()
 
     return (
-        <div className='mb-8'>
+        <div className='mb-6'>
             <div className='flex'>
                 <nav className="flex shrink space-x-2 bg-white p-2 rounded-full" aria-label="Tabs">
                     {tabs.map((tab) => (
