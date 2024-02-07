@@ -5,7 +5,7 @@ import PropertyCard from '../../components/PropertyCard'
 import { useAccount, useNetwork } from 'wagmi'
 import { watchAccount } from '@wagmi/core'
 import NftData from '../../interfaces/NftData'
-import TypeTab from '../../components/TypeTab'
+import PropertyStatusTypeTabs from '../../components/PropertyStatusTypeTabs'
 
 const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: Network.ETH_SEPOLIA });
 
@@ -41,7 +41,7 @@ export default function Page() {
 
     return (
         <div className="max-w-2xl lg:max-w-screen-2xl">
-            <TypeTab />
+            <PropertyStatusTypeTabs />
             <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-6">
                 {nftsData.map(nftData => {
                     if (chain && nftData.chainId === chain.id && nftsOwned.find(nftOwned => nftOwned.tokenId === nftData.id))

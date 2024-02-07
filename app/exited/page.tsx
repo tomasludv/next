@@ -1,11 +1,11 @@
 'use client';
 
-import TypeTab from '../../components/TypeTab';
+import PropertyStatusTypeTabs from '../../components/PropertyStatusTypeTabs';
 
 const Page = () => {
     return (
         <>
-            <TypeTab />
+            <PropertyStatusTypeTabs />
         </>
     )
 }
