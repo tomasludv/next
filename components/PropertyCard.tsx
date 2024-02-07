@@ -26,17 +26,19 @@ function classNames(...classes: string[]) {
 }
 
 
-const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt, name, price, funded, myStake, sqft }: PropertyCardProps) => {
+const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt, price, funded, myStake, sqft }: PropertyCardProps) => {
     return (
         <div key={id} className="group relative flex flex-col overflow-hidden rounded-lg borderxxx border-gray-200xxx bg-white"        >
             <div className="h-[250px] xxxaspect-h-4 xxxaspect-w-3 bg-gray-200 xxxsm:aspect-none group-hover:opacity-75 sm:h-60 relative">
                 <img src={imageSrc} alt={imageAlt} className="h-full w-full object-cover object-center sm:h-full " />
-                <div className="absolute top-0 p-1 bg-gray-900/90 w-full">
-                    <h1 className="flex justify-center items-center">
-                        <div className='text-white font-semibold text-md mr-2'>Minting Live</div>
-                        <FireIcon className="text-indigo-600 block h-4 w-4" />
-                    </h1>
-                </div>
+                {price !== funded &&
+                    <div className="absolute top-0 p-1 bg-gray-900/90 w-full">
+                        <h1 className="flex justify-center items-center">
+                            <div className='text-white font-semibold text-md mr-2'>Minting Live</div>
+                            <FireIcon className="text-indigo-600 block h-4 w-4" />
+                        </h1>
+                    </div>
+                }
             </div>
             <div className="flex flex-1 flex-col space-y-4 p-4 justify-end">
                 <a className="flex-1 text-xl font-medium text-gray-900" href={"/properties/" + id}>
