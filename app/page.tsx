@@ -7,6 +7,7 @@ import { useAccount } from 'wagmi'
 import { watchAccount, watchNetwork } from '@wagmi/core'
 import { useNetwork } from 'wagmi'
 import NftData from '../interfaces/NftData'
+import TypeTab from '../components/TypeTab'
 
 export default function Page() {
   const { chain } = useNetwork();
@@ -60,7 +61,7 @@ export default function Page() {
 
   return (
     <div className="max-w-2xl lg:max-w-screen-2xl">
-      <h2 className="sr-only">Products</h2>
+      <TypeTab />
       <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-6">
         {nftsJson.map(nftJson => {
           if (chain && nftJson.chainId === chain.id)
