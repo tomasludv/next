@@ -49,7 +49,7 @@ const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt
                 <a href={"/properties/" + id} className="flex flex-1 flex-col space-y-4 px-4 pt-4 justify-end">
                     <p className="flex-1 text-xl font-medium text-gray-900">{disposition + " in " + building + ", " + community + ", Dubai"}</p>
                     {myStake &&
-                        (<p className="hidden text-base font-medium text-gray-900">my stake: {myStake}</p>)
+                        (<p className="text-base font-medium text-gray-900">my stake: {myStake}</p>)
                     }
                     <div className="flex flex-col space-y-2">
                         <div className="flex flex-row justify-between items-end">
