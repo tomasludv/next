@@ -17,7 +17,7 @@ interface PropertyCardProps {
     funded: number;
     sqft: number;
     myStake: string | undefined;
-    totalBalance: number | undefined;
+    totalBalance: number |  undefined;
 }
 
 const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
