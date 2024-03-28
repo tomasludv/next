@@ -3,6 +3,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Providers } from './providers';
 import Topbar from './topbar'
+import Sidebar from './sidebar'
 
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (

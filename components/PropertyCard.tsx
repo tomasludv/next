@@ -17,9 +17,10 @@ interface PropertyCardProps {
     funded: number;
     sqft: number;
     myStake: string | undefined;
+    totalBalance: number | undefined;
 }
 
-const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, });
+const numberFormatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 const currencyformatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0, });
 const percentageZeroDecimalsFormatter = new Intl.NumberFormat("en-US", { style: 'percent', minimumFractionDigits: 0, maximumFractionDigits: 0 });
 const percentageSixDecimalsFormatter = new Intl.NumberFormat("en-US", { style: 'percent', minimumFractionDigits: 0, maximumFractionDigits: 6 });
@@ -28,7 +29,7 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt, price, funded, myStake, sqft }: PropertyCardProps) => {
+const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt, price, funded, myStake, totalBalance, sqft }: PropertyCardProps) => {
     const [open, setOpen] = useState(false)
     const cancelButtonRef = useRef(null)
 
@@ -48,9 +49,6 @@ const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt
                 </a>
                 <a href={"/properties/" + id} className="flex flex-1 flex-col space-y-4 px-4 pt-4 justify-end">
                     <p className="flex-1 text-xl font-medium text-gray-900">{disposition + " in " + building + ", " + community + ", Dubai"}</p>
-                    {myStake &&
-                        (<p className="text-base font-medium text-gray-900">my stake: {myStake}</p>)
-                    }
                     <div className="flex flex-col space-y-2">
                         <div className="flex flex-row justify-between items-end">
                             <p className="text-xl font-medium text-indigo-600">{currencyformatter.format(price)}</p>
@@ -77,6 +75,14 @@ const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt
                             <div className="flex items-center justify-between">
                                 <dt className="flex text-sm text-gray-600">Expected Rental Yield</dt>
                                 <dd className="text-sm font-medium text-gray-900">9.84%</dd>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <dt className="flex text-sm text-gray-600">Owned Shares</dt>
+                                <dd className="text-sm font-medium text-gray-900">{(myStake) ? numberFormatter.format(Number(myStake)) : 0}</dd>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <dt className="flex text-sm text-gray-600">Total Shares</dt>
+                                <dd className="text-sm font-medium text-gray-900">{(totalBalance) ? numberFormatter.format(Number(totalBalance)) : 0}</dd>
                             </div>
                         </dl>
                     </section>

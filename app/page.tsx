@@ -14,6 +14,7 @@ export default function Page() {
   const { address } = useAccount();
   const [nftsJson, setNftsJson] = useState<NftData[]>([]);
   const [nftsOwned, setNftsOwned] = useState<OwnedNft[]>([]);
+  const [nftsCount, setNftsCount] = useState<Map<string, number>>(new Map());
 
   const getNftsOwned = async (chainId: number, walletAddress: string) => {
     if (chainId) {
@@ -31,6 +32,16 @@ export default function Page() {
       const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: network });
       const nfts = await alchemy.nft.getNftsForOwner(walletAddress, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
       setNftsOwned(nfts.ownedNfts);
+
+      const newMap: Map<string, number> = new Map();
+      const ownersForContract = await alchemy.nft.getOwnersForContract("0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B", { withTokenBalances: true });
+      ownersForContract.owners.forEach(owner => {
+        owner.tokenBalances.forEach(token => {
+          const previousCount = newMap.get(token.tokenId) || 0;
+          newMap.set(token.tokenId, previousCount + Number(token.balance));
+        })
+      })
+      setNftsCount(newMap);
     } else {
       setNftsOwned([]);
     }
@@ -81,6 +92,7 @@ export default function Page() {
                 funded={nftJson.funded}
                 sqft={nftJson.sqft}
                 myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftJson.id)?.balance}
+                totalBalance={nftsCount.get(nftJson.id)}
               />
             )
         })}
