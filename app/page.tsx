@@ -31,8 +31,8 @@ export default function Page() {
       }
     }*/
 
-    if (address) {
-      const nfts = await alchemy.nft.getNftsForOwner(address, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
+    if (walletAddress) {
+      const nfts = await alchemy.nft.getNftsForOwner(walletAddress, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
       setNftsOwned(nfts.ownedNfts);
     } else {
       setNftsOwned([]);
