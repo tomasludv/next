@@ -87,7 +87,7 @@ const PropertyCard = ({ id, disposition, building, community, imageSrc, imageAlt
                             </div>
                             <div className="flex items-center justify-between">
                                 <dt className="flex text-sm text-gray-600">Total Shares</dt>
-                                <dd className="text-sm font-medium text-gray-900">10000000</dd>
+                                <dd className="text-sm font-medium text-gray-900">{numberFormatter.format(10000000)}</dd>
                             </div>
                         </dl>
                     </section>
