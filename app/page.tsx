@@ -10,41 +10,46 @@ import NftData from '../interfaces/NftData'
 import PropertyStatusTypeTabs from '../components/PropertyStatusTypeTabs'
 
 export default function Page() {
+  const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: Network.ETH_SEPOLIA });
   const { chain } = useNetwork();
   const { address } = useAccount();
   const [nftsJson, setNftsJson] = useState<NftData[]>([]);
   const [nftsOwned, setNftsOwned] = useState<OwnedNft[]>([]);
   const [nftsCount, setNftsCount] = useState<Map<string, number>>(new Map());
 
-  const getNftsOwned = async (chainId: number, walletAddress: string) => {
-    if (chainId) {
-      var network: Network;
-      switch (chainId) {
-        case 11155111: {
-          network = Network.ETH_SEPOLIA;
-          break;
-        }
-        default: {
-          network = Network.ETH_MAINNET;
-          break;
-        }
+  const getNftsOwned = async (/*chainId: number, */walletAddress: string) => {
+    //if (chainId) {
+    /*var network: Network;
+    switch (chainId) {
+      case 11155111: {
+        network = Network.ETH_SEPOLIA;
+        break;
       }
-      const alchemy = new Alchemy({ apiKey: process.env.ALCHEMY_API_KEY_SEPOLIA, network: network });
-      const nfts = await alchemy.nft.getNftsForOwner(walletAddress, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
-      setNftsOwned(nfts.ownedNfts);
+      default: {
+        network = Network.ETH_MAINNET;
+        break;
+      }
+    }*/
 
-      const newMap: Map<string, number> = new Map();
-      const ownersForContract = await alchemy.nft.getOwnersForContract("0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B", { withTokenBalances: true });
-      ownersForContract.owners.forEach(owner => {
-        owner.tokenBalances.forEach(token => {
-          const previousCount = newMap.get(token.tokenId) || 0;
-          newMap.set(token.tokenId, previousCount + Number(token.balance));
-        })
-      })
-      setNftsCount(newMap);
+    if (address) {
+      const nfts = await alchemy.nft.getNftsForOwner(address, { contractAddresses: ["0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B"] });
+      setNftsOwned(nfts.ownedNfts);
     } else {
       setNftsOwned([]);
     }
+
+    const newMap: Map<string, number> = new Map();
+    const ownersForContract = await alchemy.nft.getOwnersForContract("0x7f3059CAB95eDf1F526f8dE15BC9767d79Fa467B", { withTokenBalances: true });
+    ownersForContract.owners.forEach(owner => {
+      owner.tokenBalances.forEach(token => {
+        const previousCount = newMap.get(token.tokenId) || 0;
+        newMap.set(token.tokenId, previousCount + Number(token.balance));
+      })
+    })
+    setNftsCount(newMap);
+    //} else {
+    //  setNftsOwned([]);
+    //}
   }
 
   const getNftsJson = async () => {
@@ -56,17 +61,26 @@ export default function Page() {
   useEffect(() => {
     getNftsJson();
 
-    if (chain && address) getNftsOwned(chain.id, address)
-    else setNftsOwned([])
+    if (/*chain &&*/ address) {
+      getNftsOwned(/*chain.id,*/ address)
+    } else {
+      setNftsOwned([])
+    }
 
     watchAccount(account => {
-      if (chain && account.address) getNftsOwned(chain.id, account.address)
-      else setNftsOwned([])
+      if (/*chain &&*/ account.address) {
+        getNftsOwned(/*chain.id,*/ account.address)
+      } else {
+        setNftsOwned([])
+      }
     })
 
     watchNetwork(network => {
-      if (network.chain && address) getNftsOwned(network.chain.id, address)
-      else setNftsOwned([])
+      if (/*network.chain &&*/ address) {
+        getNftsOwned(/*network.chain.id,*/ address)
+      } else {
+        setNftsOwned([])
+      }
     })
   }, [])
 
@@ -75,26 +89,26 @@ export default function Page() {
       <PropertyStatusTypeTabs />
       <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-6">
         {nftsJson.map(nftJson => {
-          if (chain && nftJson.chainId === chain.id)
-            return (
-              <PropertyCard
-                key={nftJson.id}
-                id={nftJson.id}
-                disposition={nftJson.disposition}
-                building={nftJson.building}
-                community={nftJson.community}
-                imageSrc={nftJson.images[0]}
-                imageAlt={nftJson.images[0]}
-                href={"/properties/" + nftJson.id}
-                name={nftJson.name}
-                options={nftJson.options}
-                price={nftJson.price}
-                funded={nftJson.funded}
-                sqft={nftJson.sqft}
-                myStake={nftsOwned.find(nftOwned => nftOwned.tokenId === nftJson.id)?.balance}
-                totalBalance={nftsCount.get(nftJson.id)}
-              />
-            )
+          //if (chain && nftJson.chainId === chain.id)
+          return (
+            <PropertyCard
+              key={nftJson.id}
+              id={nftJson.id}
+              disposition={nftJson.disposition}
+              building={nftJson.building}
+              community={nftJson.community}
+              imageSrc={nftJson.images[0]}
+              imageAlt={nftJson.images[0]}
+              href={"/properties/" + nftJson.id}
+              name={nftJson.name}
+              options={nftJson.options}
+              price={nftJson.price}
+              funded={nftJson.funded}
+              sqft={nftJson.sqft}
+              myStake={Number(nftsOwned.find(nftOwned => nftOwned.tokenId === nftJson.id)?.balance)}
+              totalBalance={nftsCount.get(nftJson.id)}
+            />
+          )
         })}
       </div>
     </div>

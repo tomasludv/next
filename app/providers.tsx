@@ -13,7 +13,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     //polygon,
     //optimism,
     //arbitrum,
-    base,
+    //base,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   [publicProvider()]
